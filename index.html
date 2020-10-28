@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Rock Paper Scissors</title>
+    <link rel="stylesheet" type="text/css" href="styles.css">
+    <meta charset="UTF-8"/>
+</head>
+<body>
+
+    <header>
+        <div id="welcome-section">
+            <h1>Welcome to Rock Paper Scissors</h1>
+            <p>The first player to five points wins 🏆</p>
+        </div>
+    </header>
+
+    <main>
+        <div id="score-section">
+            <div id="player-side">
+                <h2 class="score-heading">👨🏽‍💻 Player score</h2>
+                <p id="player-score" class="scores"></p>
+            </div>
+            <div id="text-section">
+
+            </div>
+            <div id="computer-side">
+                <h2 class="score-heading">🤖 Computer score</h2>
+                <p id="computer-score" class="scores"></p>
+            </div>
+        </div>
+        <div id="move-section">
+            <div id="btn-heading">
+                <h3>Choose your move</h3>
+            </div>
+            <div id="move-icons">
+                <input id="rock-button" class="neumorphic page-button" type=image src="assets/landslide.png"></input>
+                <input id="paper-button" class="neumorphic page-button" type=image src="assets/paper-plane.png"></input>
+                <input id="scissors-button" class="neumorphic page-button" type=image src="assets/scissors.png"></input>
+            </div>
+            <div id="restart-btn-div">
+                <button id="restart-btn" class="page-button" onclick="restartGame()">Restart game</button>
+            </div>
+        </div>
+
+    </main>
+    
+    <footer>
+        <div id="footer-text">
+            <p>Icons made by <a href="https://www.flaticon.com/authors/those-icons" title="Those Icons">Those Icons</a> and 
+                <a href="https://www.flaticon.com/authors/freepik" title="Freepik">Freepik</a> from <a href="https://www.flaticon.com/" title="Flaticon">www.flaticon.com</a></p>
+        </div>
+    </footer>
+
+    <script>
+        // variables to store content of move section 
+        let moveHeading = document.getElementById("btn-heading");
+        let moveHeadingContent = moveHeading.innerHTML;
+        let moveIcons = document.getElementById("move-icons");
+        let moveIconsContent = moveIcons.innerHTML;
+        
+        // function to randomly return an option (computer move)
+        function computerPlay() {
+            const playOptions = ["rock", "paper", "scissors"];
+            let computerMove = Math.floor(Math.random() * playOptions.length);
+            return playOptions[computerMove];
+        }
+
+        // set scores to zero
+        let userScore = 0;
+        let computerScore = 0;
+
+        // add scores to HTML
+        document.getElementById("player-score").innerHTML = userScore;
+        document.getElementById("computer-score").innerHTML = computerScore;
+
+        // function to add points to player
+        function addUserPoints() {
+            document.getElementById("player-score").innerHTML = ++userScore;
+        }
+
+        // function to add points to computer
+        function addComputerPoints() {
+            document.getElementById("computer-score").innerHTML = ++computerScore;
+        }
+
+        // function to display final message
+        function finalMessage() {
+            if (computerScore === 5) {
+                document.getElementById("text-section").innerHTML = `You've lost the game 😥. Click Restart to try again!`;
+            } else if (userScore === 5) {
+                document.getElementById("text-section").innerHTML = `Congratulations 🥳! You've won the game! Click Restart to play again.`;
+            }
+        }
+
+        // function to play single round of rock paper scissors
+        function playRound(userSelection, computerSelection) {
+            if (userSelection === "rock" && computerSelection === "rock") {
+                return `It's a tie!`;
+            } else if (userSelection === "rock" && computerSelection === "paper") {
+                addComputerPoints();
+                if (computerScore == 5) {
+                    removeButtons();
+                    return `You've lost the game 😥<br />Click Restart to try again!`;
+                } else {
+                    return `You lose! Paper beats rock.`;
+                }
+            } else if (userSelection === "rock" && computerSelection === "scissors") {
+                addUserPoints();
+                if (userScore == 5) {
+                    removeButtons();
+                    return `Congratulations! You've won the game 🥳<br />Click Restart to play again.`;
+                } else {
+                    return `You win! Rock beats scissors.`;
+                }
+            } else if (userSelection === "paper" && computerSelection === "paper") {
+                return `It's a tie!`;
+            } else if (userSelection === "paper" && computerSelection === "scissors") {
+                addComputerPoints();
+                if (computerScore == 5) {
+                    removeButtons();
+                    return `You've lost the game 😥<br />Click Restart to try again!`;
+                } else {
+                    return `You lose! Scissors beats paper.`;
+                }
+            } else if (userSelection === "paper" && computerSelection === "rock") {
+                addUserPoints();
+                if (userScore == 5) {
+                    removeButtons();
+                    return `Congratulations! You've won the game 🥳<br />Click Restart to play again.`;
+                } else {
+                    return `You win! Paper beats rock.`;
+                }
+            } else if (userSelection === "scissors" && computerSelection === "scissors") {
+                return `It's a tie!`;
+            } else if (userSelection === "scissors" && computerSelection === "rock") {
+                addComputerPoints();
+                if (computerScore == 5) {
+                    removeButtons();
+                    return `You've lost the game 😥<br />Click Restart to try again!`;
+                } else {
+                    return `You lose! Rock beats scissors.`;
+                }
+            } else if (userSelection === "scissors" && computerSelection === "paper") {
+                addUserPoints();
+                if (userScore == 5) {
+                    removeButtons();
+                    return `Congratulations! You've won the game 🥳<br />Click Restart to play again.`;
+                } else {
+                    return `You win! Scissors beats paper.`;
+                }
+            } else {
+                return "Oops! Looks like there\'s been an error.";
+            }
+        }
+
+        // function to restart game on click
+        function restartGame() {
+            userScore = 0;
+            document.getElementById("player-score").innerHTML = userScore;
+            computerScore = 0;
+            document.getElementById("computer-score").innerHTML = computerScore;
+            document.getElementById("text-section").innerHTML = "";
+            document.getElementById("btn-heading").style.display = "block";
+            document.getElementById("move-icons").style.display = "block";
+        }
+
+        // function to remove move buttons
+        function removeButtons() {
+            document.getElementById("btn-heading").style.display = "none";
+            document.getElementById("move-icons").style.display = "none";
+        }
+
+        // event listeners on buttons
+        document.getElementById("rock-button").addEventListener("click", function() {
+            document.getElementById("text-section").innerHTML = playRound("rock", computerPlay());
+        });
+
+        document.getElementById("paper-button").addEventListener("click", function() {
+            document.getElementById("text-section").innerHTML = playRound("paper", computerPlay());
+        })
+
+        document.getElementById("scissors-button").addEventListener("click", function() {
+            document.getElementById("text-section").innerHTML = playRound("scissors", computerPlay());
+        })
+        
+    </script>
+</body>
+</html>

@@ -1,0 +1,165 @@
+body {
+    background: rgba(195,235,255,1);
+    height: 100%;
+    width: 100%;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Gilroy-ExtraBold', sans-serif;
+    color: #0d2480;
+}
+
+/* welcome section styles */
+
+#welcome-section {
+    position: absolute;
+    padding-top: 60px;
+    width: 100%;
+    height: 150px;
+    text-align: center;
+}
+
+h1 {
+    background: linear-gradient(150deg, #218bee 30%, #8600ff 65%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    text-transform: uppercase;
+    font-size: 36px;
+    margin: 0px;
+}
+
+#welcome-section p {
+    font-size: 20px;
+}
+
+/* score section styles */
+
+#score-section {
+    position: absolute;
+    width: 80%;
+    height: 200px;
+    top: 210px;
+    display: flex;
+    flex-direction: row;
+    margin-left: 10%;
+    margin-right: 10%
+}
+
+h2 {
+    font-size: 28px;
+}
+
+#player-section {
+    flex: 1;
+    text-align: center;
+}
+
+#text-section {
+    flex: 2;
+    min-width: 400px;
+    font-size: 28px;
+    align-self: center;
+    text-align: center;
+}
+
+#computer-section {
+    flex: 1;
+    text-align: center;
+}
+
+.score-heading {
+    margin: 0;
+    width: auto;
+}
+
+.scores {
+    font-size: 48px;
+    margin: 0;
+    text-align: center;
+}
+
+/* move section styles */
+
+#move-section {
+    position: absolute;
+    width: 100%;
+    top: 450px;
+    text-align: center;
+}
+
+h3 {
+    font-size: 20px !important;
+}
+
+#move-icons {
+    margin: 20px 0px 20px 0px;
+}
+
+#rock-button {
+    width: 60px;
+    height: 60px;
+    padding: 20px;
+}
+
+#paper-button {
+    width: 60px;
+    height: 60px;
+    padding: 20px;
+    margin-right: 20px;
+    margin-left: 20px;
+}
+
+#scissors-button {
+    width: 60px;
+    height: 60px;
+    padding: 20px;
+}
+
+.neumorphic {
+    box-shadow: 6px 6px 12px 0 rgba(0, 0, 0, 0.2), -6px -6px 12px 0 rgba(255, 255, 255, 0.5);
+    border-radius: 20px;
+}
+
+.neumorphic:active {
+    box-shadow: inset 6px 6px 10px 0 rgba(0, 0, 0, 0.2), inset -6px -6px 10px 0 rgba(255, 255, 255, 0.5);
+}
+
+#restart-btn-div button {
+    height: 40px;
+    width: 160px;
+    margin-top: 40px;
+    background-color: #ff0096;
+    font-family: 'Gilroy-ExtraBold', sans-serif;
+    font-size: 16px;
+    color: #fff;
+    cursor: pointer;
+    border: .125em solid #ff0096;
+    border-radius: 1.25rem;
+    justify-content: center;
+    transition: 0.4s;
+}
+
+#restart-btn-div button:hover {
+    background-color: rgb(255, 255, 255);
+    color: #ff0096;
+}
+
+.page-button:focus {
+    outline: none;
+}
+
+/* footer styles */
+
+#footer-text {
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+}
+
+#footer-text p {
+    color: #0d2480;
+    font-family: 'Gilroy-Light', sans-serif;
+    font-size: 12px;
+    margin: 0px 8px 8px 0px;
+    text-align: right;
+}
